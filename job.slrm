@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH --job-name          script-basic
+#SBATCH --time              720:00:00
+#SBATCH --nodes             1
+#SBATCH --tasks-per-node    24
+#SBATCH --error             output-%j.error
+#SBATCH --output            output-%j.output
+
+# Eliminamos los modulos cargados
+module purge
+
+# Cargando los modulos necesarios
+module load openmpi/4.1.0
+
+mpirun ./hello > output.result
